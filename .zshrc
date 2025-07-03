@@ -36,15 +36,15 @@ zinit ice depth"1" # git clone depth
 zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/tmux
+# zinit light zsh-users/tmux
 # zinit light zdharma-continuum/fast-syntax-highlighting
 zinit load agkozak/zsh-z
 
 
 #auto start tmux settings
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_AUTOSTART_ONCE=true
-ZSH_TMUX_AUTOCONNECT=true
+# ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART_ONCE=true
+# ZSH_TMUX_AUTOCONNECT=true
 
 #alias 
 alias v="nvim"
