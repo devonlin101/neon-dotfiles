@@ -30,30 +30,41 @@ autoload -Uz _zinit
 
 ### End of Zinit's installer chunk
 
+# Load starship theme
+# line 1: `starship` binary as command, from github release
+# line 2: starship setup at clone(create init.zsh, completion)
+# line 3: pull behavior same as clone, source init.zsh
+zinit ice as"command" from"gh-r" \
+          atclone"./starship init zsh > init.zsh; ./starship completions zsh > _starship" \
+          atpull"%atclone" src"init.zsh"
+zinit light starship/starship
 
-# Load powerlevel10k theme
-zinit ice depth"1" # git clone depth
-zinit light romkatv/powerlevel10k
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-syntax-highlighting
-# zinit light zsh-users/tmux
+zinit light zsh-users/zsh-completions
+zinit light agkozak/zsh-z
 # zinit light zdharma-continuum/fast-syntax-highlighting
-zinit load agkozak/zsh-z
-
-
-#auto start tmux settings
-# ZSH_TMUX_AUTOSTART=true
-# ZSH_TMUX_AUTOSTART_ONCE=true
-# ZSH_TMUX_AUTOCONNECT=true
 
 #alias 
+alias zu="zinit update"
+alias zsu="zinit self-update"
+alias zdc="zinit delete --clean"
 alias v="nvim"
 alias s="source"
 alias c="clear"
 alias e="exit"
-alias u='sh macbash.sh'
+alias u='sh dailybash.sh'
 alias l="eza --icons --color=always"
 alias la="eza -a --icons --color=always"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# fnm
+FNM_PATH="/home/devonlin10/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="/home/devonlin10/.local/share/fnm:$PATH"
+  eval "`fnm env`"
+fi
+eval "$(fnm env --use-on-cd --shell zsh)"
+eval "$(starship init zsh)"
