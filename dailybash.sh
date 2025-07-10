@@ -7,5 +7,5 @@ sudo apt-get clean -y
 sudo apt-get autoclean -y
 sudo apt-get autoremove -y
 date
-fastfetch --config os
+# fastfetch --config os
 fastfetch
